@@ -16,11 +16,15 @@ int main() {
 
 	int *testArray = new int[4] {10, 20, 30, 40};
 
-	print_array(testArray, 4);
-
 	ArrayShifter::array_shift(testArray, 4, 1);
 
 	print_array(testArray, 4);
+
+	int* testArray2 = new int[4] {10, 20, 30, 40};
+
+	ArrayShifter::array_shift(testArray2, 4, 8);
+
+	print_array(testArray2, 4);
 
 	//assert();
 
