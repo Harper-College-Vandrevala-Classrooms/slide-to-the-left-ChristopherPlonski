@@ -5,6 +5,7 @@
 using namespace std;
 
 void print_array(int *array, int size) {
+	cout << "Finished Array: " << endl;
 	for (int i = 0; i < size; i++) {
 		cout << array[i] << ", ";
 	}
@@ -14,6 +15,7 @@ void print_array(int *array, int size) {
 void test_function(int *testArray, int *correctArrayAfterChange, int arraySize, int shiftAmount) {
 	ArrayShifter::array_shift(testArray, arraySize, shiftAmount);
 
+	//print_array(testArray, arraySize);
 	assert(*testArray == *correctArrayAfterChange);
 
 	delete testArray;

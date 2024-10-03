@@ -40,7 +40,7 @@ void ArrayShifter::array_shift(int *&intArray, const int arraySize, const int sh
 
 	print_array(shiftedArray, arraySize);
 
-	//delete[] intArray;
+	delete[] intArray;
 	intArray = shiftedArray;
 
 	print_array(intArray, arraySize);
