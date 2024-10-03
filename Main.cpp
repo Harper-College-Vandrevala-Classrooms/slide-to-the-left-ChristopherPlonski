@@ -11,22 +11,31 @@ void print_array(int *array, int size) {
 	cout << endl;
 }
 
+void test_function(int *testArray, int *correctArrayAfterChange, int arraySize, int shiftAmount) {
+	ArrayShifter::array_shift(testArray, arraySize, shiftAmount);
+
+	assert(*testArray == *correctArrayAfterChange);
+
+	delete testArray;
+	delete correctArrayAfterChange;
+}
+
 int main() {
 	cout << "--Beginning tests. \n";
 
-	int *testArray = new int[4] {10, 20, 30, 40};
+	test_function(new int[4] {10, 20, 30, 40}, new int[4] {20, 30, 40, 10}, 4, 1);
 
-	ArrayShifter::array_shift(testArray, 4, 1);
+	test_function(new int[4] {10, 20, 30, 40}, new int[4] {10, 20, 30, 40}, 4, 8);
 
-	print_array(testArray, 4);
+	test_function(new int[4] {10, 20, 30, 40}, new int[4] {10, 20, 30, 40}, 4, 0); // Shift 0
 
-	int* testArray2 = new int[4] {10, 20, 30, 40};
+	test_function(new int[4] {10, 20, 30, 40}, new int[4] {30, 40, 10, 20}, 4, 34); // Shift 34, AKA: 2
 
-	ArrayShifter::array_shift(testArray2, 4, 8);
+	test_function(new int[4] {10, 20, 30, 40}, new int[4] {10, 20, 30, 40}, 4, 800); // Shift 800, AKA: 0
 
-	print_array(testArray2, 4);
+	test_function(new int[50] {0}, new int[50] {0}, 50, 7); // Array with lots of 0
 
-	//assert();
+	test_function(new int[1] {5}, new int[1] {5}, 1, 7); // Array with 1 value
 
 	cout << "--Tests completed successfully! \n";
 }
